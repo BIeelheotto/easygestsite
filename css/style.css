@@ -14,7 +14,7 @@ button,input,textarea{font:inherit}
   --grey:#666;
   --shadow:0 6px 18px rgba(0,0,0,.06);
   --radius:6px;
-  --base:15px;          /* referência reduzida */
+  --base:14px;          /* referência reduzida */
   --scale:1;            /* multiplicador */
   font-size:calc(var(--base) * var(--scale));
   scroll-behavior:smooth;
