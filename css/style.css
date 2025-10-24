@@ -127,9 +127,24 @@ a{color:var(--oxford);transition:.3s ease}
 .hamburger{display:none;flex-direction:column;gap:4px;background:none;border:none}
 .hamburger span{width:24px;height:2.5px;background:var(--oxford);border-radius:2px;transition:.3s}
 @media(max-width:992px){
-  .nav{position:absolute;top:100%;left:0;right:0;background:var(--white);flex-direction:column;padding:1.5rem 0;box-shadow:var(--shadow);display:none}
+  .nav{position:absolute;top:100%;left:0;right:0;background:var(--white);flex-direction:column;padding:1rem 0;box-shadow:var(--shadow);display:none}
   .nav.open{display:flex}
   .hamburger{display:flex}
+  .nav a {
+    font-size: 1.1rem; /* Aumentado para melhor leitura */
+    padding: .9rem 1rem;
+    width: 100%;
+    text-align: center;
+  }
+  .nav a:not(.btn-primary):not(.btn-outline) {
+    border-bottom: 1px solid var(--lavender);
+  }
+  .nav a:hover{ background: var(--lavender); }
+  .nav .btn-primary, .nav .btn-outline {
+      margin-top: .5rem;
+      width: calc(100% - 2rem);
+      margin-left: 0;
+  }
 }
 
 /* ----------  HERO  ---------- */
