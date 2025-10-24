@@ -1,13 +1,10 @@
-
-// ----------  FUNÇÕES DO MENU HAMBURGER  ----------
-const nav = document.querySelector('.nav');
-const hamburger = document.querySelector('.hamburger');
-
+// --- Funções do Menu ---
 function toggleMenu() {
+  const nav = document.querySelector('.nav');
   nav.classList.toggle('open');
 }
 
-// ----------  FUNÇÕES DO MODAL  ----------
+// --- Funções do Modal ---
 const modal = document.getElementById('modal');
 const modalTitle = document.getElementById('modalTitle');
 const authForm = document.getElementById('authForm');
@@ -15,35 +12,41 @@ const swapText = document.getElementById('swapText');
 const swapLink = document.getElementById('swapLink');
 let isLoginMode = true;
 
-function openModal(mode, plan = '') {
-  modal.style.display = 'grid';
-  isLoginMode = mode === 'login';
-  updateModalContent();
+function openModal(mode = 'login', plan = '') {
+  isLoginMode = (mode === 'login');
+  updateModalUI();
   if (plan) {
+    // Você pode usar essa informação para pré-selecionar um plano no formulário de cadastro
     console.log(`Plano selecionado: ${plan}`);
-    // Aqui você pode adicionar um campo hidden no formulário com o plano, etc.
+  }
+  if (modal) {
+    modal.style.display = 'grid';
   }
 }
 
 function closeModal() {
-  modal.style.display = 'none';
+  if (modal) {
+    modal.style.display = 'none';
+  }
 }
 
 function swapMode(event) {
   event.preventDefault();
   isLoginMode = !isLoginMode;
-  updateModalContent();
+  updateModalUI();
 }
 
-function updateModalContent() {
+function updateModalUI() {
+  if (!modalTitle || !authForm || !swapText || !swapLink) return;
+
   if (isLoginMode) {
     modalTitle.textContent = 'Entrar';
     authForm.querySelector('button[type="submit"]').textContent = 'Entrar';
     swapText.textContent = 'Ainda não tem conta?';
     swapLink.textContent = 'Crie agora';
   } else {
-    modalTitle.textContent = 'Crie sua conta grátis';
-    authForm.querySelector('button[type="submit"]').textContent = 'Testar grátis';
+    modalTitle.textContent = 'Criar conta grátis';
+    authForm.querySelector('button[type="submit"]').textContent = 'Criar conta';
     swapText.textContent = 'Já tem uma conta?';
     swapLink.textContent = 'Faça login';
   }
@@ -52,25 +55,33 @@ function updateModalContent() {
 function handleAuth(event) {
   event.preventDefault();
   const email = authForm.querySelector('input[type="email"]').value;
-  if (isLoginMode) {
-    console.log(`Tentativa de login com o e-mail: ${email}`);
-    // Lógica de login aqui
-  } else {
-    console.log(`Tentativa de cadastro com o e-mail: ${email}`);
-    // Lógica de cadastro aqui
-  }
+  alert(`${isLoginMode ? 'Login' : 'Cadastro'} com o e-mail: ${email}`);
   closeModal();
 }
 
-// Fecha o modal se o usuário clicar fora do conteúdo
-window.onclick = function(event) {
-  if (event.target == modal) {
+// --- Outras Funções ---
+
+// Atualiza o ano no rodapé e inicializa a galeria
+document.addEventListener('DOMContentLoaded', () => {
+  const yearSpan = document.getElementById('year');
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+
+  // Inicializa a galeria de imagens
+  if (typeof GLightbox !== 'undefined') {
+    const lightbox = GLightbox({
+      selector: '.glightbox',
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: true
+    });
+  }
+});
+
+// Fecha o modal se o usuário clicar fora dele
+window.addEventListener('click', (event) => {
+  if (event.target === modal) {
     closeModal();
   }
-}
-
-// ----------  ATUALIZAÇÃO DINÂMICA DO ANO NO RODAPÉ  ----------
-const yearSpan = document.getElementById('year');
-if (yearSpan) {
-  yearSpan.textContent = new Date().getFullYear();
-}
+});
