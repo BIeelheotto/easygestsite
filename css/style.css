@@ -160,7 +160,7 @@ a{color:var(--oxford);transition:.3s ease}
   padding: 4rem 0;
   color: var(--white);
   text-align: center;
-  background: url('../img/banner-principal.jpg') no-repeat center center;
+  background: url('../img/banner-principal.webp') no-repeat center center;
   background-size: cover;
 }
 
