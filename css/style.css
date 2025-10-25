@@ -116,6 +116,9 @@ a{color:var(--oxford);transition:.3s ease}
 .nav a:hover::after{width:50%}
 
 .nav .btn-primary,.nav .btn-outline{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width:clamp(100px,10vw,130px);
   height:clamp(36px,4vw,44px);
   padding:0;
