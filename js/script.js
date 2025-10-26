@@ -1,1 +1,104 @@
-function toggleMenu(){const nav=document.querySelector(".nav");nav.classList.toggle("open")}const modal=document.getElementById("modal"),modalTitle=document.getElementById("modalTitle"),authForm=document.getElementById("authForm"),swapText=document.getElementById("swapText"),swapLink=document.getElementById("swapLink");let isLoginMode=!0;function openModal(e="login",t=""){isLoginMode="login"===e,updateModalUI(),t&&console.log(`Plano selecionado: ${t}`),modal&&(modal.style.display="grid")}function closeModal(){modal&&(modal.style.display="none")}function swapMode(e){e.preventDefault(),isLoginMode=!isLoginMode,updateModalUI()}function updateModalUI(){modalTitle&&authForm&&swapText&&swapLink&&(isLoginMode?(modalTitle.textContent="Entrar",authForm.querySelector('button[type="submit"]').textContent="Entrar",swapText.textContent="Ainda não tem conta?",swapLink.textContent="Crie agora"):(modalTitle.textContent="Criar conta grátis",authForm.querySelector('button[type="submit"]').textContent="Criar conta",swapText.textContent="Já tem uma conta?",swapLink.textContent="Faça login"))}function handleAuth(e){e.preventDefault();const t=authForm.querySelector('input[type="email"]').value;alert(`${isLoginMode?"Login":"Cadastro"} com o e-mail: ${t}`),closeModal()}document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("year");e&&(e.textContent=(new Date).getFullYear()),"undefined"!=typeof GLightbox&&GLightbox({selector:".glightbox",touchNavigation:!0,loop:!0,autoplayVideos:!0})}),window.addEventListener("click",e=>{e.target===modal&&closeModal()});
+document.addEventListener("DOMContentLoaded", () => {
+    const yearElement = document.getElementById("year");
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+
+    if (typeof GLightbox !== "undefined") {
+        GLightbox({
+            selector: ".glightbox",
+            touchNavigation: true,
+            loop: true,
+            autoplayVideos: true,
+        });
+    }
+
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modalTitle");
+    const authForm = document.getElementById("authForm");
+    const swapText = document.getElementById("swapText");
+    const swapLink = document.getElementById("swapLink");
+    const hamburger = document.querySelector(".hamburger");
+    const nav = document.querySelector(".nav");
+    const closeModalButton = document.querySelector(".close");
+
+    let isLoginMode = true;
+
+    function openModal(mode = "login", plan = "") {
+        isLoginMode = (mode === "login");
+        updateModalUI();
+        if (plan) {
+            // console.log(`Plano selecionado: ${plan}`);
+        }
+        if (modal) {
+            modal.style.display = "grid";
+        }
+    }
+
+    function closeModal() {
+        if (modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    function swapMode(event) {
+        event.preventDefault();
+        isLoginMode = !isLoginMode;
+        updateModalUI();
+    }
+
+    function updateModalUI() {
+        if (modalTitle && authForm && swapText && swapLink) {
+            if (isLoginMode) {
+                modalTitle.textContent = "Entrar";
+                authForm.querySelector('button[type="submit"]').textContent = "Entrar";
+                swapText.textContent = "Ainda não tem conta?";
+                swapLink.textContent = "Crie agora";
+            } else {
+                modalTitle.textContent = "Criar conta grátis";
+                authForm.querySelector('button[type="submit"]').textContent = "Criar conta";
+                swapText.textContent = "Já tem uma conta?";
+                swapLink.textContent = "Faça login";
+            }
+        }
+    }
+
+    function handleAuth(event) {
+        event.preventDefault();
+        const email = authForm.querySelector('input[type="email"]').value;
+        alert(`${isLoginMode ? "Login" : "Cadastro"} com o e-mail: ${email}`);
+        closeModal();
+    }
+
+    document.querySelectorAll("[data-modal-mode]").forEach(button => {
+        button.addEventListener("click", () => {
+            const mode = button.getAttribute("data-modal-mode");
+            const plan = button.getAttribute("data-plan");
+            openModal(mode, plan);
+        });
+    });
+
+    if (hamburger) {
+        hamburger.addEventListener("click", () => {
+            nav.classList.toggle("open");
+        });
+    }
+
+    if (closeModalButton) {
+        closeModalButton.addEventListener("click", closeModal);
+    }
+
+    if (swapLink) {
+        swapLink.addEventListener("click", swapMode);
+    }
+
+    if (authForm) {
+        authForm.addEventListener("submit", handleAuth);
+    }
+
+    window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+});

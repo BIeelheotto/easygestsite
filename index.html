@@ -29,9 +29,9 @@
       <a href="#sobre">Sobre</a>
       <a href="#contato">Contato</a>
       <a href="https://igororlandi999.github.io/easygest/" class="btn-outline">Entrar</a>
-      <button class="btn-primary" onclick="openModal('signup')">Teste grátis</button>
+      <button class="btn-primary" data-modal-mode="signup">Teste grátis</button>
     </nav>
-    <button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
+    <button class="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -40,9 +40,9 @@
 <!-- HERO -->
 <section class="hero">
   <div class="container hero-grid">
-    <h1>Tudo o que sua micro-empresa precisa para crescer, em um único lugar</h1>
+    <h1>Tudo o que sua microempresa precisa para crescer, em um único lugar</h1>
     <p>Emita notas, controle estoque, organize o financeiro e receba relatórios automáticos — sem complicação.</p>
-    <button class="btn-primary large" onclick="openModal('signup')">Teste grátis por 7 dias</button>
+    <button class="btn-primary large" data-modal-mode="signup">Teste grátis por 7 dias</button>
     <span class="note">✅ Sem cartão de crédito</span>
   </div>
 </section>
@@ -50,7 +50,7 @@
 <!-- FUNCIONALIDADES -->
 <section id="funcionalidades" class="funcionalidades">
   <div class="container">
-    <h2>Facilite seu dia a dia com automação</h2>
+    <h2 class="text-center">Facilite seu dia a dia com automação</h2>
     <div class="grid-3">
   <div class="card-func">
     <img src="img/imagen-vendas.webp" alt="Tela de Vendas do sistema EasyGest" class="card-func-img" loading="lazy">
@@ -73,8 +73,8 @@
 <!-- DASHBOARD GALLERY -->
 <section id="dashboard" class="dashboard-gallery">
   <div class="container">
-    <h2>Conheça a plataforma por dentro</h2>
-    <p>Navegue por algumas de nossas principais telas e veja como é fácil gerenciar sua empresa.</p>
+    <h2 class="text-center">Conheça a plataforma por dentro</h2>
+    <p class="text-center">Navegue por algumas de nossas principais telas e veja como é fácil gerenciar sua empresa.</p>
     <div class="gallery-grid">
       <a href="img/banner-principal.webp" class="glightbox" data-gallery="dashboard" data-title="Dashboard Principal">
         <img src="img/banner-principal.webp" alt="Visão geral do Dashboard EasyGest" loading="lazy">
@@ -99,22 +99,22 @@
     <p class="text-center">O EasyGest é flexível e se adapta às necessidades de diversos segmentos do mercado.</p>
     <div class="segmentos-grid">
       <div class="segmento-card">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <svg width="48" height="48"><use href="img/icons.svg#icon-varejo"></use></svg>
         <h3>Varejo</h3>
         <span>Lojas de roupas, calçados, eletrônicos, mercados, etc.</span>
       </div>
       <div class="segmento-card">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        <svg width="48" height="48"><use href="img/icons.svg#icon-servicos"></use></svg>
         <h3>Serviços</h3>
         <span>Oficinas, salões de beleza, agências, assistências, etc.</span>
       </div>
       <div class="segmento-card">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <svg width="48" height="48"><use href="img/icons.svg#icon-distribuidores"></use></svg>
         <h3>Distribuidores</h3>
         <span>Atacadistas e distribuidores de pequeno e médio porte.</span>
       </div>
       <div class="segmento-card">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+        <svg width="48" height="48"><use href="img/icons.svg#icon-industrias"></use></svg>
         <h3>Indústrias</h3>
         <span>Confecções, marcenarias, metalúrgicas de pequeno porte.</span>
       </div>
@@ -159,6 +159,47 @@
   </div>
 </section>
 
+<!-- COMPARATIVO: EasyGest vs ERP Tradicional -->
+<section id="comparativo" class="comparativo">
+  <div class="container">
+    <h2 class="text-center">EasyGest vs. ERP Tradicional</h2>
+    <p class="text-center">Veja por que micro e pequenas empresas escolhem o EasyGest</p>
+
+    <div class="table-wrapper">
+      <table class="compara-table">
+        <thead>
+          <tr>
+            <th>Recurso</th>
+            <th>EasyGest</th>
+            <th>ERP Tradicional</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CNPJs e Usuários</td>
+            <td><span class="check">✓</span> Ilimitados</td>
+            <td><span class="times">✗</span> Pago por CNPJ/usuário</td>
+          </tr>
+          <tr>
+            <td>Implantação</td>
+            <td><span class="check">✓</span> Rápida e fácil</td>
+            <td><span class="times">✗</span> Demorada e complexa</td>
+          </tr>
+          <tr>
+            <td>Integração Bancária</td>
+            <td><span class="check">✓</span> Com os maiores bancos do Brasil</td>
+            <td><span class="times">✗</span> Troca de arquivos manual</td>
+          </tr>
+          <tr>
+            <td>Suporte</td>
+            <td><span class="check">✓</span> Humano em &lt;1 minuto</td>
+            <td><span class="times">✗</span> Fila longa e automatizada</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
 <!-- SOBRE -->
 <section id="sobre" class="cases">
@@ -201,7 +242,7 @@
           <li>Emissão de NFC-e</li>
           <li>Suporte por e-mail</li>
         </ul>
-        <button class="btn-primary" onclick="openModal('signup', 'starter')">Experimentar</button>
+        <button class="btn-primary" data-modal-mode="signup" data-plan="starter">Experimentar</button>
       </div>
       <div class="card featured">
         <span class="badge">Mais Popular</span>
@@ -217,7 +258,7 @@
           <li>Relatórios avançados</li>
           <li>Suporte WhatsApp</li>
         </ul>
-        <button class="btn-primary" onclick="openModal('signup', 'business')">Experimentar</button>
+        <button class="btn-primary" data-modal-mode="signup" data-plan="business">Experimentar</button>
       </div>
       <div class="card">
         <h3>Enterprise</h3>
@@ -232,7 +273,43 @@
           <li>Sucesso do cliente</li>
           <li>On-premise (opcional)</li>
         </ul>
-        <button class="btn-primary" onclick="openModal('signup', 'enterprise')">Falar com consultor</button>
+        <button class="btn-primary" data-modal-mode="signup" data-plan="enterprise">Falar com consultor</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORQUE USAR O EASYGEST -->
+<section id="porque-usar" class="porque-usar">
+  <div class="container">
+    <h2 class="text-center">Por que usar o EasyGest?</h2>
+    <div class="porque-grid">
+      <div class="porque-item">
+        <div class="porque-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a2.828 2.828 0 0 1 2.828 2.828L12 12l-2.828-7.172A2.828 2.828 0 0 1 12 2z"/><path d="M12 22a2.828 2.828 0 0 0-2.828-2.828L12 12l2.828 7.172A2.828 2.828 0 0 0 12 22z"/><path d="M2 12a2.828 2.828 0 0 0 2.828 2.828L12 12 4.828 9.172A2.828 2.828 0 0 0 2 12z"/><path d="M22 12a2.828 2.828 0 0 1-2.828-2.828L12 12l7.172 2.828A2.828 2.828 0 0 1 22 12z"/></svg>
+        </div>
+        <div class="porque-text">
+          <h3>Simplicidade Pura</h3>
+          <p>Comece a usar em minutos, não em meses. Sem menus complicados ou jargões técnicos.</p>
+        </div>
+      </div>
+      <div class="porque-item">
+        <div class="porque-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a4 4 0 0 0-4 4v12a4 4 0 0 0 4 4h3a4 4 0 0 0 4-4V6a4 4 0 0 0-4-4z"/><path d="M7 18a4 4 0 0 0-4-4H2V6h1a4 4 0 0 0 4-4h3v16H7z"/></svg>
+        </div>
+        <div class="porque-text">
+          <h3>Suporte que Resolve</h3>
+          <p>Converse com pessoas de verdade. Nosso time entende do seu negócio e resolve seus problemas.</p>
+        </div>
+      </div>
+      <div class="porque-item">
+        <div class="porque-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="porque-text">
+          <h3>Custo-Benefício Real</h3>
+          <p>Pague um preço justo. Sem taxas escondidas ou surpresas. O melhor retorno sobre seu investimento.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -311,15 +388,15 @@
 <!-- MODAL LOGIN/CADASTRO -->
 <div id="modal" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
+    <span class="close">&times;</span>
     <h2 id="modalTitle">Entrar</h2>
-    <form id="authForm" onsubmit="handleAuth(event)">
+    <form id="authForm">
       <input type="email" placeholder="Seu e-mail" required>
       <input type="password" placeholder="Senha" required>
       <button type="submit" class="btn-primary full">Entrar</button>
       <p class="swap">
         <span id="swapText">Ainda não tem conta?</span>
-        <a href="#" id="swapLink" onclick="swapMode(event)">Crie agora</a>
+        <a href="#" id="swapLink">Crie agora</a>
       </p>
     </form>
   </div>
