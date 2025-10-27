@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    const mainContent = document.getElementById("main-content");
     const modal = document.getElementById("modal");
     const modalTitle = document.getElementById("modalTitle");
     const authForm = document.getElementById("authForm");
@@ -23,21 +24,64 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeModalButton = document.querySelector(".close");
 
     let isLoginMode = true;
+    let lastFocusedElement; // To store the element that opened the modal
 
     function openModal(mode = "login", plan = "") {
+        lastFocusedElement = document.activeElement; // Save focus
         isLoginMode = (mode === "login");
         updateModalUI();
         if (plan) {
             // console.log(`Plano selecionado: ${plan}`);
         }
-        if (modal) {
+        if (modal && mainContent) {
             modal.style.display = "grid";
+            modal.setAttribute("aria-hidden", "false");
+            mainContent.setAttribute("aria-hidden", "true");
+
+            modal.addEventListener('keydown', handleModalKeyDown);
+
+            const focusableElements = modal.querySelectorAll('button, [href], input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
+            const firstFocusableElement = focusableElements[0];
+            if (firstFocusableElement) {
+                firstFocusableElement.focus();
+            }
         }
     }
 
     function closeModal() {
-        if (modal) {
+        if (modal && mainContent) {
             modal.style.display = "none";
+            modal.setAttribute("aria-hidden", "true");
+            mainContent.setAttribute("aria-hidden", "false");
+            modal.removeEventListener('keydown', handleModalKeyDown);
+        }
+        if (lastFocusedElement) {
+            lastFocusedElement.focus(); // Restore focus
+        }
+    }
+
+    function handleModalKeyDown(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+            return;
+        }
+
+        if (e.key === 'Tab') {
+            const focusableElements = modal.querySelectorAll('button, [href], input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
+            const firstFocusableElement = focusableElements[0];
+            const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+            if (e.shiftKey) { // if shift key pressed for shift + tab combination
+                if (document.activeElement === firstFocusableElement) {
+                    lastFocusableElement.focus(); // add focus for the last focusable element
+                    e.preventDefault();
+                }
+            } else { // if tab key is pressed
+                if (document.activeElement === lastFocusableElement) { // if focused has reached to last focusable element then focus first focusable element after pressing tab
+                    firstFocusableElement.focus(); // add focus for the first focusable element
+                    e.preventDefault();
+                }
+            }
         }
     }
 

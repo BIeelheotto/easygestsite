@@ -162,11 +162,14 @@ a {
     max-width: 1800px;
 }
 
+.logo-link {
+    text-decoration: none;
+}
+
 .logo-box {
     display: flex;
     align-items: center;
     gap: .75rem;
-    text-decoration: none;
 }
 
 .logo-img {
@@ -835,6 +838,8 @@ a {
     font-size: clamp(1.4rem, 3vw, 1.8rem);
     cursor: pointer;
     color: var(--oxford);
+    background: none;
+    border: none;
 }
 
 #authForm input {
@@ -1066,4 +1071,16 @@ a {
         font-size: .95rem;
         padding: 1rem .9rem;
     }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
