@@ -1,5 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
     const yearElement = document.getElementById("year");
+    const header = document.querySelector(".header");
+    const mainContent = document.getElementById("main-content");
+
+    function updateMainContentPadding() {
+        if (header && mainContent) {
+            const headerHeight = header.offsetHeight;
+            mainContent.style.paddingTop = `${headerHeight}px`;
+        }
+    }
+
     if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
     }
@@ -13,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const mainContent = document.getElementById("main-content");
     const modal = document.getElementById("modal");
     const modalTitle = document.getElementById("modalTitle");
     const authForm = document.getElementById("authForm");
@@ -145,4 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
             closeModal();
         }
     });
+
+    updateMainContentPadding();
+    window.addEventListener("resize", updateMainContentPadding);
 });

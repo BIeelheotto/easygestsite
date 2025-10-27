@@ -144,7 +144,8 @@ a {
 
 /* Header */
 .header {
-    position: sticky;
+    position: fixed;
+    width: 100%;
     top: 0;
     z-index: 100;
     background: var(--white);
